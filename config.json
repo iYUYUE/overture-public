@@ -4,8 +4,8 @@
   "DohEnabled": true,
   "PrimaryDNS": [
     {
-      "Name": "CloudflareDNS",
-      "Address": "https://cloudflare-dns.com/dns-query",
+      "Name": "GoogleDOH",
+      "Address": "https://dns.google/dns-query",
       "Protocol": "https",
       "SOCKS5Address": "",
       "Timeout": 8,
@@ -16,21 +16,34 @@
       }
     },
     {
-      "Name": "GoogleDNS",
-      "Address": "https://dns.google/dns-query",
-      "Protocol": "https",
+      "Name": "GoogleDNS8",
+      "Address": "8.8.8.8:53",
+      "Protocol": "udp",
       "SOCKS5Address": "",
-      "Timeout": 8,
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    },
+    {
+      "Name": "GoogleDNS4",
+      "Address": "8.8.4.4:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
       "EDNSClientSubnet": {
         "Policy": "auto",
         "ExternalIP": "",
         "NoCookie": true
       }
     }
+    
   ],
   "AlternativeDNS": [
     {
-      "Name": "AliDNS-China",
+      "Name": "AliDOH",
       "Address": "https://dns.alidns.com/dns-query",
       "Protocol": "https",
       "SOCKS5Address": "",
@@ -42,11 +55,23 @@
       }
     },
     {
-      "Name": "GoogleDNS-China",
-      "Address": "https://dns.google/dns-query",
-      "Protocol": "https",
+      "Name": "AliDNS5",
+      "Address": "223.5.5.5:53",
+      "Protocol": "udp",
       "SOCKS5Address": "",
-      "Timeout": 8,
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "manual",
+        "ExternalIP": "114.216.0.0",
+        "NoCookie": false
+      }
+    },
+    {
+      "Name": "AliDNS6",
+      "Address": "223.6.6.6:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
       "EDNSClientSubnet": {
         "Policy": "manual",
         "ExternalIP": "114.216.0.0",
