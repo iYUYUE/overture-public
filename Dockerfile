@@ -5,7 +5,7 @@ RUN apk update \
 	&& wget https://github.com/shawn1m/overture/releases/download/v1.7-rc3/overture-linux-amd64.zip \
 	&& unzip -d /etc/overture overture-linux-amd64.zip \
 	&& cd /etc/overture \
+	&& curl https://raw.githubusercontent.com/soffchen/GeoIP2-CN/release/CN-ip-cidr.txt > /etc/overture/china_ips.txt \
 	&& curl https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf | sed -e 's/server=\/\(.*\)\/114\.114\.114\.114/\1/' > /etc/overture/china_domains.txt
 COPY config.json /etc/overture/config.json
-COPY ip_network_primary_sample /etc/overture/ip_network_primary_sample
 CMD /etc/overture/overture-linux-amd64 -c /etc/overture/config.json
