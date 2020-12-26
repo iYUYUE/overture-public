@@ -59,10 +59,18 @@
   "PoolIdleTimeout": 15,
   "PoolMaxCapacity": 15,
   "WhenPrimaryDNSAnswerNoneUse": "AlternativeDNS",
+  "IPNetworkFile": {
+    "Primary": "/etc/overture/ip_network_primary_sample",
+    "Alternative": "/etc/overture/ip_network_alternative_sample"
+  },
   "DomainFile": {
     "Primary": "/etc/overture/domain_primary_sample",
-    "Alternative": "/etc/overture/domain_alternative_sample",
-    "Matcher": "regex-list"
+    "Alternative": "/etc/overture/china_domains.txt",
+    "Matcher": "full-map"
+  },
+  "HostsFile": {
+    "HostsFile": "/etc/overture/hosts_sample",
+    "Finder": "full-map"
   },
   "MinimumTTL": 0,
   "DomainTTLFile" : "/etc/overture/domain_ttl_sample",
