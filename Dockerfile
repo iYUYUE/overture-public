@@ -5,10 +5,7 @@ RUN apk update \
 	&& wget https://github.com/shawn1m/overture/releases/download/v1.6.1/overture-linux-amd64.zip \
 	&& unzip -d /etc/overture overture-linux-amd64.zip \
 	&& cd /etc/overture \
-	&& wget https://raw.githubusercontent.com/lmc999/overture-docker/main/config.json -O config.json \
-	&& wget https://raw.githubusercontent.com/17mon/china_ip_list/master/china_ip_list.txt -O ip_network_primary_sample \
-	&& curl https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt | base64 -d | sort -u | sed '/^$\|@@/d'| sed 's#!.\+##; s#|##g; s#@##g; s#http:\/\/##; s#https:\/\/##;' | sed '/\*/d; /apple\.com/d; /sina\.cn/d; /sina\.com\.cn/d; /baidu\.com/d; /qq\.com/d' | sed '/^[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+$/d' | grep '^[0-9a-zA-Z\.-]\+$' | grep '\.' | sed 's#^\.\+##' | sort -u > /tmp/temp_gfwlist.txt \
-	&& curl https://raw.githubusercontent.com/hq450/fancyss/master/rules/gfwlist.conf | sed 's/ipset=\/\.//g; s/\/gfwlist//g; /^server/d' > /tmp/temp_koolshare.txt \
-	&& cat /tmp/temp_gfwlist.txt /tmp/temp_koolshare.txt | sort -u > /etc/overture/domain_alternative_sample
-
+	&& wget https://raw.githubusercontent.com/iYUYUE/overture-public/main/config.json -O config.json \
+	&& curl https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf | sed -e 's/server=\/\(.*\)\/114\.114\.114\.114/\1/' > /etc/overture/domain_alternative_sample
+	
 CMD /etc/overture/overture-linux-amd64 -c /etc/overture/config.json
