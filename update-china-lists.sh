@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 curl https://raw.githubusercontent.com/soffchen/GeoIP2-CN/release/CN-ip-cidr.txt > /tmp/china_ips.txt
