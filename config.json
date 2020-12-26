@@ -1,6 +1,7 @@
 {
   "BindAddress": ":53",
   "DebugHTTPAddress": "127.0.0.1:5555",
+  "DohEnabled": true,
   "PrimaryDNS": [
     {
       "Name": "CloudflareDNS",
@@ -29,8 +30,8 @@
   ],
   "AlternativeDNS": [
     {
-      "Name": "CloudflareDNS-China",
-      "Address": "https://cloudflare-dns.com/dns-query",
+      "Name": "AliDNS-China",
+      "Address": "https://dns.alidns.com/dns-query",
       "Protocol": "https",
       "SOCKS5Address": "",
       "Timeout": 8,
