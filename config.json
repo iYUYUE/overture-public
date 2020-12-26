@@ -4,6 +4,44 @@
   "DohEnabled": true,
   "PrimaryDNS": [
     {
+      "Name": "GoogleDOH-China",
+      "Address": "https://dns.google/dns-query",
+      "Protocol": "https",
+      "SOCKS5Address": "",
+      "Timeout": 8,
+      "EDNSClientSubnet": {
+        "Policy": "manual",
+        "ExternalIP": "114.216.0.0",
+        "NoCookie": false
+      }
+    },
+    {
+      "Name": "GoogleDNS8-China",
+      "Address": "8.8.8.8:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "manual",
+        "ExternalIP": "114.216.0.0",
+        "NoCookie": false
+      }
+    },
+    {
+      "Name": "GoogleDNS4-China",
+      "Address": "8.8.4.4:53",
+      "Protocol": "udp",
+      "SOCKS5Address": "",
+      "Timeout": 6,
+      "EDNSClientSubnet": {
+        "Policy": "manual",
+        "ExternalIP": "114.216.0.0",
+        "NoCookie": false
+      }
+    }
+  ],
+  "AlternativeDNS": [
+    {
       "Name": "GoogleDOH",
       "Address": "https://dns.google/dns-query",
       "Protocol": "https",
@@ -39,45 +77,6 @@
         "NoCookie": true
       }
     }
-    
-  ],
-  "AlternativeDNS": [
-    {
-      "Name": "AliDOH",
-      "Address": "https://dns.alidns.com/dns-query",
-      "Protocol": "https",
-      "SOCKS5Address": "",
-      "Timeout": 8,
-      "EDNSClientSubnet": {
-        "Policy": "manual",
-        "ExternalIP": "114.216.0.0",
-        "NoCookie": false
-      }
-    },
-    {
-      "Name": "AliDNS5",
-      "Address": "223.5.5.5:53",
-      "Protocol": "udp",
-      "SOCKS5Address": "",
-      "Timeout": 6,
-      "EDNSClientSubnet": {
-        "Policy": "manual",
-        "ExternalIP": "114.216.0.0",
-        "NoCookie": false
-      }
-    },
-    {
-      "Name": "AliDNS6",
-      "Address": "223.6.6.6:53",
-      "Protocol": "udp",
-      "SOCKS5Address": "",
-      "Timeout": 6,
-      "EDNSClientSubnet": {
-        "Policy": "manual",
-        "ExternalIP": "114.216.0.0",
-        "NoCookie": false
-      }
-    }
   ],
   "OnlyPrimaryDNS": false,
   "IPv6UseAlternativeDNS": false,
@@ -86,12 +85,12 @@
   "PoolMaxCapacity": 15,
   "WhenPrimaryDNSAnswerNoneUse": "AlternativeDNS",
   "IPNetworkFile": {
-    "Primary": "/etc/overture/ip_network_primary_sample",
+    "Primary": "/etc/overture/china_ips.txt",
     "Alternative": "/etc/overture/ip_network_alternative_sample"
   },
   "DomainFile": {
-    "Primary": "/etc/overture/domain_primary_sample",
-    "Alternative": "/etc/overture/china_domains.txt",
+    "Primary": "/etc/overture/china_domains.txt",
+    "Alternative": "/etc/overture/domain_alternative_sample",
     "Matcher": "full-map"
   },
   "HostsFile": {
