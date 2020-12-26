@@ -3,28 +3,52 @@
   "DebugHTTPAddress": "127.0.0.1:5555",
   "PrimaryDNS": [
     {
-      "Name": "DNSPOD",
-      "Address": "119.29.29.29:53",
-      "Protocol": "udp",
+      "Name": "CloudflareDNS",
+      "Address": "https://cloudflare-dns.com/dns-query",
+      "Protocol": "https",
       "SOCKS5Address": "",
-      "Timeout": 6,
+      "Timeout": 8,
       "EDNSClientSubnet": {
-        "Policy": "manual",
-        "ExternalIP": "119.129.50.1",
-        "NoCookie": false
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
+      }
+    },
+    {
+      "Name": "GoogleDNS",
+      "Address": "https://dns.google/dns-query",
+      "Protocol": "https",
+      "SOCKS5Address": "",
+      "Timeout": 8,
+      "EDNSClientSubnet": {
+        "Policy": "auto",
+        "ExternalIP": "",
+        "NoCookie": true
       }
     }
   ],
   "AlternativeDNS": [
     {
-      "Name": "OpenDNS",
-      "Address": "208.67.222.222:443",
-      "Protocol": "tcp",
+      "Name": "CloudflareDNS-China",
+      "Address": "https://cloudflare-dns.com/dns-query",
+      "Protocol": "https",
       "SOCKS5Address": "",
-      "Timeout": 6,
+      "Timeout": 8,
       "EDNSClientSubnet": {
-        "Policy": "disable",
-        "ExternalIP": "",
+        "Policy": "manual",
+        "ExternalIP": "114.216.0.0",
+        "NoCookie": false
+      }
+    },
+    {
+      "Name": "GoogleDNS-China",
+      "Address": "https://dns.google/dns-query",
+      "Protocol": "https",
+      "SOCKS5Address": "",
+      "Timeout": 8,
+      "EDNSClientSubnet": {
+        "Policy": "manual",
+        "ExternalIP": "114.216.0.0",
         "NoCookie": false
       }
     }
@@ -35,18 +59,10 @@
   "PoolIdleTimeout": 15,
   "PoolMaxCapacity": 15,
   "WhenPrimaryDNSAnswerNoneUse": "AlternativeDNS",
-  "IPNetworkFile": {
-    "Primary": "/etc/overture/ip_network_primary_sample",
-    "Alternative": "/etc/overture/ip_network_alternative_sample"
-  },
   "DomainFile": {
     "Primary": "/etc/overture/domain_primary_sample",
     "Alternative": "/etc/overture/domain_alternative_sample",
     "Matcher": "regex-list"
-  },
-  "HostsFile": {
-    "HostsFile": "/etc/overture/hosts_sample",
-    "Finder": "regex-list"
   },
   "MinimumTTL": 0,
   "DomainTTLFile" : "/etc/overture/domain_ttl_sample",
