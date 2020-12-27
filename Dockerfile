@@ -10,4 +10,5 @@ RUN apk update \
 COPY config.json /etc/overture/config.json
 COPY update-china-lists.sh /etc/periodic/daily/update-china-lists
 RUN chmod +x /etc/periodic/daily/update-china-lists
-CMD /etc/overture/overture-linux-amd64 -c /etc/overture/config.json
+
+CMD echo -e "\n127.0.0.10 ${FLY_REGION}" >> /etc/overture/hosts_sample && /etc/overture/overture-linux-amd64 -c /etc/overture/config.json
